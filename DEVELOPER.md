@@ -56,6 +56,11 @@ Owns canonical identity provisioning and status state so the rest of the ecosyst
 | Field | Value |
 | --- | --- |
 | Depends On | None |
+| Recommended Plugins | None |
+| Capability Enhancing | None |
+| Integration Only | None |
+| Suggested Packs | None |
+| Standalone Supported | Yes |
 | Requested Capabilities | `ui.register.admin`, `api.rest.mount`, `data.write.auth` |
 | Provides Capabilities | `auth.identities` |
 | Owns Data | `auth.identities` |

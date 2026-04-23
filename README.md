@@ -54,11 +54,26 @@ This tier is justified because unit coverage exists, and contract coverage exist
 | Manifest ID | `auth-core` |
 | Repo | [gutu-plugin-auth-core](https://github.com/gutula/gutu-plugin-auth-core) |
 | Depends On | None |
+| Recommended Plugins | None |
+| Capability Enhancing | None |
+| Integration Only | None |
+| Suggested Packs | None |
+| Standalone Supported | Yes |
 | Requested Capabilities | `ui.register.admin`, `api.rest.mount`, `data.write.auth` |
 | Provided Capabilities | `auth.identities` |
 | Runtime | bun>=1.3.12 |
 | Database | postgres, sqlite |
 | Integration Model | Actions+Resources+UI |
+
+## Installation Guidance
+
+- Required plugins: none
+- Recommended plugins: none
+- Capability-enhancing plugins: none
+- Integration-only plugins: none
+- Suggested packs: none
+- Standalone supported: yes
+
 
 ## Capability Matrix
 
