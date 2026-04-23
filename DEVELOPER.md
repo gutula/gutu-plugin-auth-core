@@ -40,6 +40,8 @@ Owns canonical identity provisioning and status state so the rest of the ecosyst
 | Package Name | `@plugins/auth-core` |
 | Manifest ID | `auth-core` |
 | Display Name | Auth Core |
+| Domain Group | Platform Backbone |
+| Default Category | User Management / Authentication |
 | Version | `0.1.0` |
 | Kind | `app` |
 | Trust Tier | `first-party` |
@@ -199,6 +201,7 @@ console.log("action", provisionIdentityAction.id);
 - The plugin owns durable data state, but it does not yet ship a dedicated migration verification lane in this repo.
 - No standalone plugin-owned event, job, or workflow catalog is exported yet; compose it through actions, resources, and the surrounding Gutu runtime.
 - The plugin exposes a UI surface, but not a richer admin workspace contribution module.
+- The repo does not yet export a domain parity catalog with owned entities, reports, settings surfaces, and exception queues.
 
 ### Recommended next
 

@@ -14,6 +14,7 @@ Canonical identity and session backbone.
 | --- | --- |
 | Repo kind | First-party plugin |
 | Domain group | Platform Backbone |
+| Default category | User Management / Authentication |
 | Primary focus | identity provisioning, provider state, tenant-safe identities |
 | Best when | You need a governed domain boundary with explicit contracts and independent release cadence. |
 | Composes through | Actions+Resources+UI |
@@ -38,7 +39,8 @@ This tier is justified because unit coverage exists, and contract coverage exist
 
 ## Verified Capability Summary
 
-- Group: **Platform Backbone**
+- Domain group: **Platform Backbone**
+- Default category: **User Management / Authentication**
 - Verification surface: **Build+Typecheck+Lint+Test+Contracts**
 - Tests discovered: **2** total files across unit, contract lanes
 - Integration model: **Actions+Resources+UI**
@@ -67,6 +69,12 @@ This tier is justified because unit coverage exists, and contract coverage exist
 | Jobs | 0 | No job catalog exported |
 | Workflows | 0 | No workflow catalog exported |
 | UI | Present | base UI surface |
+| Owned Entities | 0 | No explicit domain catalog yet |
+| Reports | 0 | No explicit report catalog yet |
+| Exception Queues | 0 | No explicit exception queues yet |
+| Operational Scenarios | 0 | No explicit operational scenario matrix yet |
+| Settings Surfaces | 0 | No explicit settings surface catalog yet |
+| ERPNext Refs | 0 | No direct ERPNext reference mapping declared |
 
 ## Quick Start For Integrators
 

@@ -5,6 +5,12 @@ export default definePackage({
   kind: "app",
   version: "0.1.0",
   displayName: "Auth Core",
+  defaultCategory: {
+    id: "user_management",
+    label: "User Management",
+    subcategoryId: "authentication",
+    subcategoryLabel: "Authentication"
+  },
   description: "Canonical identity and session backbone.",
   extends: [],
   dependsOn: [],
