@@ -14,6 +14,7 @@ import {
 import { PageHeader } from "@/admin-primitives/PageHeader";
 import { Card, CardContent } from "@/admin-primitives/Card";
 import { EmptyState } from "@/admin-primitives/EmptyState";
+import { useUiResources } from "@/runtime/useUiMetadata";
 import { Button } from "@/primitives/Button";
 import { Input } from "@/primitives/Input";
 import { Label } from "@/primitives/Label";
@@ -267,6 +268,32 @@ function CreateTokenDialog({
   onOpenChange: (o: boolean) => void;
   onCreated: (t: CreatedApiToken) => void;
 }) {
+  // Build the resource catalog from the live UI metadata layer, with
+  // the curated RESOURCE_CATALOG merged in as a fallback (the seeded
+  // labels are friendlier than the auto-derived "Crm Contact"). The
+  // pseudo-entry "*" stays at the top regardless of registry state.
+  const { data: liveResources } = useUiResources();
+  const resourceCatalog = React.useMemo<{ value: string; label: string }[]>(() => {
+    const seedById = new Map(RESOURCE_CATALOG.map((r) => [r.value, r]));
+    const wildcard = RESOURCE_CATALOG.find((r) => r.value === "*");
+    const out: { value: string; label: string }[] = [];
+    if (wildcard) out.push(wildcard);
+    const seenIds = new Set<string>([wildcard?.value ?? ""]);
+    for (const r of liveResources) {
+      if (seenIds.has(r.id)) continue;
+      const seed = seedById.get(r.id);
+      out.push({ value: r.id, label: seed?.label ?? r.label ?? r.id });
+      seenIds.add(r.id);
+    }
+    for (const r of RESOURCE_CATALOG) {
+      if (!seenIds.has(r.value)) {
+        out.push(r);
+        seenIds.add(r.value);
+      }
+    }
+    return out;
+  }, [liveResources]);
+
   const [name, setName] = React.useState("");
   const [scopes, setScopes] = React.useState<DraftScope[]>([
     { key: newScopeKey(), resource: "crm.contact", verbs: ["read"] },
@@ -433,7 +460,7 @@ function CreateTokenDialog({
             </div>
             <div className="flex flex-col gap-2">
               {scopes.map((s) => {
-                const isCustom = !RESOURCE_CATALOG.some(
+                const isCustom = !resourceCatalog.some(
                   (r) => r.value === s.resource,
                 );
                 return (
@@ -458,7 +485,7 @@ function CreateTokenDialog({
                             <SelectValue placeholder="Pick a resource" />
                           </SelectTrigger>
                           <SelectContent>
-                            {RESOURCE_CATALOG.map((r) => (
+                            {resourceCatalog.map((r) => (
                               <SelectItem key={r.value} value={r.value}>
                                 {r.label}
                               </SelectItem>
