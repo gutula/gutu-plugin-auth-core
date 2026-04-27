@@ -411,7 +411,8 @@ function CreateTokenDialog({
                   size="sm"
                   variant="secondary"
                   onClick={() => applyTemplate(tpl)}
-                  iconLeft={tpl.icon}
+                  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+                  iconLeft={tpl.icon as any}
                   title={tpl.description}
                 >
                   {tpl.label}
