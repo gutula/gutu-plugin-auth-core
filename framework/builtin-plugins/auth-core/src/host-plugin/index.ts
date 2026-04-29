@@ -13,6 +13,16 @@ export const hostPlugin: HostPlugin = {
   routes: [
     { mountPath: "/api-tokens", router: apiTokenRoutes }
   ],
+  resources: [
+    "auth.api-token",
+    "auth.invitation",
+    "auth.ip-policy",
+    "auth.login-event",
+    "auth.permission",
+    "auth.role",
+    "auth.session",
+    "auth.user",
+  ],
 };
 
 export * from "./lib";
